@@ -108,6 +108,11 @@ persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
 ro.camera.sensors=ov8865_q8v18a,ov2680_skuhf,ov2680_5987fhq
 
+# System property for Camera
+# System prop to allocate Reprocess buffer as "1"
+# during Longshot usecase
+persist.camera.longshot.stages=1
+
 # Sensors
 ro.fusion.magfield.max=250
 
