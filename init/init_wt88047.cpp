@@ -40,7 +40,51 @@
 
 #include "init_msm8916.h"
 
-static std::string board_id;
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+
+#define ALPHABET_LEN 256
+#define KB 1024
+
+#define IMG_PART_PATH "/dev/block/bootdevice/by-name/modem"
+#define IMG_VER_STR "QC_IMAGE_VERSION_STRING="
+#define IMG_VER_STR_LEN 24
+#define IMG_VER_BUF_LEN 255
+#define IMG_SZ 32000 * KB    /* MMAP 32000K of modem, modem partition is 64000K */
+
+static char board_id[32];
+
+static void import_kernel_nv(const std::string& key, const std::string& value, bool for_emulator) {
+
+    char in_str[32], *board_value, *ptr;
+    int count = 0;
+
+    // board_id=S88047C1:board_vol=1047620
+    // The above string can be broken down into three pieces
+    // key should contain "board_id" and value contains "S88047C1:board_vol"
+
+    if (strcmp(key.c_str(), "board_id")) {
+	/* not board_id */
+    	return;
+    }
+
+    strncpy(in_str, value.c_str(), sizeof(in_str));
+    if (in_str[0] != '\0') {
+	ptr = in_str;
+	// delimiter or eol found
+	do {
+	    if (*ptr == ':') break;
+	    if (*ptr == '\0') break;
+	    ++count;
+	    ++ptr;
+	} while (ptr);
+
+	strncpy(board_id, value.c_str(), count);
+	board_id[count]='\0';
+	ERROR("\n **** READ BOARDID=%s **** \n",board_id);
+    }
+
+    return;
+}
 
 static void import_entire_kernel_cmdline(bool in_qemu,
                            const std::function<void(const std::string&, bool)>& fn) {
