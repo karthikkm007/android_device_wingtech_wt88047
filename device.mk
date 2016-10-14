@@ -339,3 +339,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ims/ims.xml:system/etc/permissions/ims.xml \
     $(LOCAL_PATH)/configs/ims/qti_permissions.xml:system/etc/permissions/qti_permissions.xml
 
+# QMI
+PRODUCT_PACKAGES += \
+    dsi_config.xml \
+    netmgr_config.xml \
+    qmi_config.xml
