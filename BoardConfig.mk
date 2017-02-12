@@ -81,6 +81,9 @@ TARGET_USES_NEW_ION_API := true
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 TARGET_USES_MKE2FS := true
 
+# Framework sched boost
+ENABLE_SCHED_BOOST := true
+
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 BOARD_HAVE_QCOM_FM := true
