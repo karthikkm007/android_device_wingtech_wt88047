@@ -81,8 +81,8 @@ SYSTEM_PARSE_LEGACY_KERNEL_CMDLINE_BOARDID := true
 TARGET_GCC_VERSION_EXP := 4.9
 
 # Kernel Tool Chain
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
-KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -228,4 +228,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # inherit from the proprietary version
--include vendor/wingtech/wt88047/BoardConfigVendor.mk
+-include vendor/xiaomi/wt88047/BoardConfigVendor.mk
