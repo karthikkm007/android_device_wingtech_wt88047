@@ -434,3 +434,9 @@ service wcnss-service /system/vendor/bin/wcnss_service
 service qcom-mem /system/vendor/bin/init.qcom.mem.sh
     disabled
     oneshot
+
+# This fixes broken data connection on netmgrd crash
+on property:sys.boot_completed=1
+    restart ril-daemon
+    restart ril-daemon2
+    restart netmgrd
