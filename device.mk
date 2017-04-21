@@ -334,6 +334,14 @@ PRODUCT_PACKAGES += \
     imssettings \
     init.qti.ims.sh
 
+# IMSEnabler
+PRODUCT_PACKAGES += \
+   IMSEnabler \
+   libshim_parcel \
+   libshim_boringssl \
+   libshims_camera \
+   libshims_ims
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ims/imscm.xml:system/etc/permissions/imscm.xml \
     $(LOCAL_PATH)/configs/ims/ims.xml:system/etc/permissions/ims.xml \
