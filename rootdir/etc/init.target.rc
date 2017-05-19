@@ -25,7 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.ims.rc
+import /vendor/etc/init/hw/init.qcom.ims.rc
 
 on boot
     # Torch
