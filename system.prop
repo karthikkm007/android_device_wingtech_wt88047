@@ -73,7 +73,7 @@ ril.subscription.types=RUIM
 # WIFI
 wifi.interface=wlan0
 # FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/config
+ro.frp.pst=/dev/block/platform/soc.0/7824900.sdhci/by-name/config
 # SYS
 ro.sys.fw.dex2oat_thread_count=3
 ro.sys.fw.use_trim_settings=true
