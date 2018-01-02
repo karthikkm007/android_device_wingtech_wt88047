@@ -237,7 +237,7 @@ PRODUCT_PACKAGES += \
     fs_config_files
 
 # Telephony
-PRODUCT_PACKAGES += telephony-ext
+PRODUCT_PACKAGES += telephony-ext ims-ext-common
 PRODUCT_BOOT_JARS += telephony-ext
 
 # Lights
