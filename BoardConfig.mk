@@ -175,5 +175,7 @@ TARGET_USES_IMS := true
 # odex system for a faster boot
 WITH_DEXPREOPT := true
 
-# Vendor
+# Shipping API level (for CTS backward compatibility)
+PRODUCT_SHIPPING_API_LEVEL := 19
+
 include vendor/wingtech/wt88047/BoardConfigVendor.mk
