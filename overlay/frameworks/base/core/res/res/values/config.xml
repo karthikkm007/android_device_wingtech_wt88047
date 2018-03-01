@@ -201,13 +201,13 @@
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm/boot-framework.oat"</item>
-        <item>"/system/framework/arm/boot-framework.vdex"</item>
+        <item>"/system/framework/boot-framework.vdex"</item>
         <item>"/system/framework/oat/arm/services.odex"</item>
         <item>"/system/framework/oat/arm/services.vdex"</item>
         <item>"/system/framework/arm/boot.oat"</item>
-        <item>"/system/framework/arm/boot.vdex"</item>
+        <item>"/system/framework/boot.vdex"</item>
         <item>"/system/framework/arm/boot-core-libart.oat"</item>
-        <item>"/system/framework/arm/boot-core-libart.vdex"</item>
+        <item>"/system/framework/boot-core-libart.vdex"</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of network
@@ -344,7 +344,6 @@
     <!-- Configuration to restart radio upon PDP_DEACTIVATE with
          error cause as Regular deactivation(36). -->
     <bool name="config_restart_radio_on_pdp_fail_regular_deactivation">false</bool>
-
 
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
