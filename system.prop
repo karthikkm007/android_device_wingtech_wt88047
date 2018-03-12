@@ -75,7 +75,6 @@ wifi.interface=wlan0
 # FRP
 ro.frp.pst=/dev/block/platform/soc.0/7824900.sdhci/by-name/config
 # SYS
-ro.sys.fw.dex2oat_thread_count=3
 ro.sys.fw.use_trim_settings=true
 ro.sys.fw.empty_app_percent=50
 ro.sys.fw.trim_empty_percent=100
@@ -90,6 +89,11 @@ dalvik.vm.heapmaxfree=8m
 dalvik.vm.dex2oat-flags=--no-watch-dog
 dalvik.vm.dex2oat-swap=false
 sys.use_fifo_ui=1
+ro.min_freq_0=800000
+dalvik.vm.boot-dex2oat-threads=8
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-threads=4
+ro.sys.fw.dex2oat_thread_count=4
 # Camera
 persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
