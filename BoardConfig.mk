@@ -98,7 +98,6 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8916
 TARGET_LIBINIT_MSM8916_DEFINES_FILE := $(DEVICE_PATH)/init/init_wt88047.cpp
 
