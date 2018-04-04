@@ -15,6 +15,8 @@
 #
 
 $(call inherit-product, vendor/xiaomi/wt88047/wt88047-vendor.mk)
+$(call inherit-product, vendor/volte/volte.mk)
+$(call inherit-product, vendor/volte/lettuce/lettuce-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -343,9 +345,7 @@ PRODUCT_PACKAGES += \
    libshims_ims
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ims/imscm.xml:system/etc/permissions/imscm.xml \
-    $(LOCAL_PATH)/configs/ims/ims.xml:system/etc/permissions/ims.xml \
-    $(LOCAL_PATH)/configs/ims/qti_permissions.xml:system/etc/permissions/qti_permissions.xml
+     $(LOCAL_PATH)/configs/ims/ims.xml:system/etc/permissions/ims.xml 
 
 # QMI
 PRODUCT_PACKAGES += \
