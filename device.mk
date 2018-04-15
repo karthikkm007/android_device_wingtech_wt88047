@@ -355,6 +355,12 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.manager@1.0 
+
+# Shims
+PRODUCT_PACKAGES += \
+    libshims_boringssl \
+    libshims_camera \
+    libshims_ims
 
 include device/wingtech/wt88047/default-prop.mk
