@@ -178,6 +178,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libwpa_client
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
+
 # Inherit the rest from msm8916-common
 $(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
 
