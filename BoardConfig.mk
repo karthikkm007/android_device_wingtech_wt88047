@@ -175,6 +175,9 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
     /system/vendor/lib/lib-imsvt.so|libshims_ims.so
 
+# Gapps
+GAPPS_VARIANT := pico
+
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211
