@@ -518,4 +518,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
-
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2017-01-01
