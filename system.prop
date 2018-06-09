@@ -95,3 +95,5 @@ persist.camera.hal.debug.mask=0
 ro.camera.sensors=ov8865_q8v18a,ov2680_skuhf,ov2680_5987fhq
 # Sensors
 ro.fusion.magfield.max=250
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2017-01-01
