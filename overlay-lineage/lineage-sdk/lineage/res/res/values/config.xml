@@ -87,4 +87,23 @@
          that support pulsating and RGB control would set this config
          to 75. -->
     <integer name="config_deviceLightCapabilities" translatable="false">75</integer>
+    
+    <!-- Display mode remapping table.
+         If the mode names returned by the backend do not match
+         the predefined and translated strings in the Settings
+         app, they can be remapped here. The format is
+         "oldname:newname", one per entry. -->
+    <string-array name="config_displayModeMappings" translatable="false">
+        <item>00default:standard</item>
+        <item>01warm:reading</item>
+        <item>02cool:dynamic</item>
+        <item>37sRGB-native:srgb</item>
+    </string-array>
+ 
+    <!-- Should we filter any display modes which are unmapped? -->
+    <bool name="config_filterDisplayModes">true</bool>
+
+    <!-- Indicate whether encryption causes significant performances loss.
+         This MUST NOT be set to true on devices produced in 2016 or later -->
+    <bool name="config_trustLegacyEncryption">true</bool>
 </resources>
