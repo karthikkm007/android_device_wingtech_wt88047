@@ -330,12 +330,6 @@ service qmuxd /system/vendor/bin/qmuxd
     group radio audio bluetooth gps oem_2950 wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
-    class core
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
-
 service netmgrd /system/vendor/bin/netmgrd
     class main
     user root
