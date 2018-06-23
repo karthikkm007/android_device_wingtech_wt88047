@@ -2,9 +2,9 @@
 
   {
     "remote": "github",
-    "repository": "Cangkuls/android_kernel_wingtech_msm8916",
+    "repository": "karthikkm007/kernel_wingtech_msm8916",
     "target_path": "kernel/wingtech/msm8916",
-    "branch": "oreo-mr1-cleanup"
+    "branch": "oreo"
   },
 
   {
