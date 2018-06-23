@@ -136,7 +136,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
-    copybit.msm8916 \
+    android.hardware.memtrack@1.0-service \
     gralloc.msm8916 \
     hwcomposer.msm8916 \
     libgenlock \
