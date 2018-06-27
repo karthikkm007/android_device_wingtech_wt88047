@@ -205,9 +205,7 @@
         <item>"/system/framework/arm/boot.vdex"</item>
         <item>"/system/framework/arm/boot-core-libart.oat"</item>
         <item>"/system/framework/arm/boot-core-libart.vdex"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
-   </string-array>
+    </string-array>
 
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
