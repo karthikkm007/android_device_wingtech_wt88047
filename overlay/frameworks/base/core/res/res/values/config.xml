@@ -90,7 +90,11 @@
         <item>255</item>
         <item>255</item>
     </integer-array>
+    <!-- Default color for notification LED is blue. -->
+    <color name="config_defaultNotificationColor">#ff00ffff</color>
 
+    <!-- Disable button brightness settings -->
+    <!-- integer name="config_buttonBrightnessSettingDefault">0</integer -->
     <!-- Control the behavior when the user long presses the home button.
             0 - Nothing
             1 - Menu key
