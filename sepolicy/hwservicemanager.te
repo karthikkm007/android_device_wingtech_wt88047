@@ -1,0 +1,4 @@
+binder_use(hwservicemanager)
+allow hwservicemanager init:dir r_dir_perms;
+allow hwservicemanager init:file r_file_perms;
+
