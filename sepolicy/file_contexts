@@ -9,3 +9,7 @@
 # Shell files
 /system/vendor/bin/init\.qcom\.mem\.sh                                    u:object_r:qti_init_shell_exec:s0
 /system/vendor/bin/init\.qti\.ims\.sh					  u:object_r:qti_init_shell_exec:s0
+
+# FIXME
+# Temporary fix for system_sever avc denial
+/data/dalvik-cache/arm/system@app@AntHalService@AntHalService.apk@classes.dex u:object_r:dvm_file_exec:s0
