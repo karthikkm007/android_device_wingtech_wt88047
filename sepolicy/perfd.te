@@ -1,4 +1,5 @@
 allow perfd self:capability fsetid;
 allow perfd sysfs_thermal:dir search;
 allow perfd sysfs_thermal:file w_file_perms;
+allow perfd mediacodec:dir r_dir_perms;
 allow perfd perfd:capability dac_override;

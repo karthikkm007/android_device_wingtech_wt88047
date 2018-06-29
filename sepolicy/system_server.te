@@ -3,3 +3,5 @@
 # boosting them to make it "more likely" to run on big cores.
 allow system_server domain:process setsched;
 set_prop(system_server, compass_prop)
+dontaudit system_server dalvikcache_data_file:file execute;
+dontaudit system_server dalvikcache_data_file:file write;
