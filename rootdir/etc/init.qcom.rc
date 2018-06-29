@@ -32,10 +32,6 @@ import init.target.rc
 import init.qcom.ims.rc
 
 on early-init
-    mkdir /firmware 0771 system system
-    mkdir /system 0777 root root
-    symlink /data/tombstones /tombstones
-
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -43,9 +39,6 @@ on early-init
     write /sys/class/leds/lcd-backlight/trigger "backlight"
 
 on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
-
     symlink /sdcard /storage/sdcard0
 
 on fs
@@ -57,7 +50,6 @@ on fs
 
 # msm specific files that need to be created on /data
 on post-fs-data
-
     mkdir /data/fdAlbum 0770 camera camera
     mkdir /data/misc/camera 0770 camera camera
 
@@ -80,42 +72,11 @@ on post-fs-data
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
     restorecon_recursive /data/misc/audio
 
-    # Create directory used by the DASH client
-    mkdir /data/misc/dash 0770 media audio
-
-    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
-    # We chown/chmod /persist again so because mount is run as root + defaults
-    chown system system /persist
-    chmod 0771 /persist
-    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_sdcc.3/polling
-    chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
-
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
@@ -123,14 +84,9 @@ on post-fs-data
     mkdir /data/misc/location/quipc 0770 gps system
     mkdir /data/misc/location/gsiff 0770 gps gps
 
-    #Create directory from IMS services
+    # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
-
-    #Create directory for FOTA
-    mkdir /data/fota 0771
-    chown system system /data/fota
-
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
@@ -140,7 +96,7 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    #Create a folder for SRS to be able to create a usercfg file
+    # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
     mkdir /data/diag_logs 0777 system system
@@ -148,11 +104,7 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    # Allow subsystem (modem etc) debugging
-    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
-    write /sys/module/pil_msa/parameters/pbl_mba_boot_timeout_ms ${persist.sys.mba_boot_timeout}
-    write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
-    write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
+
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
@@ -195,15 +147,15 @@ on boot
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
+    # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-#   Assign TCP buffer thresholds to be ceiling value of technology maximums
-#   Increased technology maximums should be reflected here.
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
@@ -232,10 +184,6 @@ on boot
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
-
-    # Set the console loglevel to < KERN_INFO
-    # Set the default message loglevel to KERN_INFO
-    write /proc/sys/kernel/printk "6 6 1 7"
 
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
@@ -321,7 +269,7 @@ service netmgrd /vendor/bin/netmgrd
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  2
+    write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -353,22 +301,6 @@ service charger /charger
     class charger
     group log
     seclabel u:r:charger:s0
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
 
 # Start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
