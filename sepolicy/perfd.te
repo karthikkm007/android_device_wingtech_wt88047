@@ -1,0 +1,1 @@
+allow perfd perfd:capability dac_override;
