@@ -2,3 +2,4 @@
 # run on big cores for app launch (sched_boost) - instead of just
 # boosting them to make it "more likely" to run on big cores.
 allow system_server domain:process setsched;
+set_prop(system_server, compass_prop)

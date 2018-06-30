@@ -294,11 +294,11 @@ service rmt_storage /system/vendor/bin/rmt_storage
     shutdown critical
     writepid /dev/cpuset/system-background/tasks
 
-service cnd /system/bin/cnd
+service cnd /system/vendor/bin/cnd
     class late_start
     socket cnd stream 660 root inet
 
-service dpmd /system/bin/dpmd
+service dpmd /system/vendor/bin/dpmd
     class main
     socket dpmd stream 660 root system
 
@@ -367,7 +367,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw oem_2950 net_admin wifi
@@ -387,7 +387,7 @@ service charger /charger
     group log
     seclabel u:r:charger:s0
 
-service ssr_diag /system/bin/ssr_diag
+service ssr_diag /system/vendor/bin/ssr_diag
     class late_start
     user system
     group system
@@ -404,7 +404,7 @@ on property:persist.usb.hvdcp.detect=false
     stop hvdcp
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics

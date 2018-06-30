@@ -1,2 +1,0 @@
-binder_call(mediaserver, servicemanager);
-binder_call(mediaserver, sensorservice_service);
