@@ -3,4 +3,5 @@ allow kernel domain:process setsched;
 # TODO - root cause of this denial
 allow kernel sysfs:file rw_file_perms;
 allow kernel sysfs:dir rw_dir_perms;
+allow kernel tmpfs:dir search;
 dontaudit kernel self:capability { dac_override dac_read_search };
