@@ -50,7 +50,8 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc \
     init.qcom.ims.rc \
-    init.qti.ims.sh
+    init.qti.ims.sh \
+    init.qcom.bt.sh
 
 # Media
 PRODUCT_COPY_FILES += \
