@@ -4,7 +4,7 @@
     "remote": "github",
     "repository": "karthikkm007/kernel_wingtech_msm8916",
     "target_path": "kernel/wingtech/msm8916",
-    "branch": "oreo"
+    "branch": "oreo-mr1"
   },
 
   {
