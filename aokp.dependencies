@@ -11,7 +11,7 @@
     "remote": "github",
     "repository": "karthikkm007/vendor_wingtech_wt88047",
     "target_path": "vendor/wingtech",
-    "branch": "8.1"
+    "branch": "oreo"
   }
 
 ]
