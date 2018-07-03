@@ -142,6 +142,9 @@ TARGET_RIL_VARIANT := caf
 MALLOC_SVELTE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 
+# Power
+TARGET_HAS_NO_POWER_STATS := true
+
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
