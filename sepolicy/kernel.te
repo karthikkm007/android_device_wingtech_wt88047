@@ -1,5 +1,6 @@
 # TODO - root cause why the kernel generating this denial.
 allow kernel domain:process setsched;
+allow kernel untrusted_app:fd use;
 # TODO - root cause of this denial
 allow kernel sysfs:file rw_file_perms;
 allow kernel sysfs:dir rw_dir_perms;
