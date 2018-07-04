@@ -449,8 +449,17 @@
          This MUST NOT be set to true on devices produced in 2016 or later -->
     <!-- bool name="config_trustLegacyEncryption">true</bool -->
 
+    <!-- Default LED on time for notification LED in milliseconds. -->
+    <integer name="config_defaultNotificationLedOn">500</integer>
+
+    <!-- Default LED off time for notification LED in milliseconds. -->
+    <integer name="config_defaultNotificationLedOff">5000</integer>
+
     <!-- Is the battery LED intrusive? -->
     <bool name="config_intrusiveBatteryLed">true</bool>
+
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
