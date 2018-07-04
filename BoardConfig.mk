@@ -90,9 +90,7 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Healthd
-BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
