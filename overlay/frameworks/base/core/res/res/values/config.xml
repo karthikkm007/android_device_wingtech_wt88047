@@ -393,7 +393,7 @@
             64 - Volume keys
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">83</integer>
+    <!-- integer name="config_deviceHardwareKeys">7</integer> -->
 
    <!-- Enable system navigation keys. -->
    <bool name="config_supportSystemNavigationKeys">true</bool>
