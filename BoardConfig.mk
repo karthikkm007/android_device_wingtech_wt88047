@@ -111,10 +111,6 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
-# Lights
-BOARD_LIGHTS_VARIANT := aw2013
-TARGET_PROVIDES_LIBLIGHT := true
-
 # Lineage HW
 BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
 
