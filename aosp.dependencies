@@ -1,7 +1,7 @@
 [
   {
     "remote":  "github",
-    "repository":  "MkfsSion/android_kernel_wingtech_msm8916",
+    "repository":  "LineageOS/android_kernel_wingtech_msm8916",
     "target_path":  "kernel/wingtech/msm8916",
     "branch":  "lineage-15.1"
   },
