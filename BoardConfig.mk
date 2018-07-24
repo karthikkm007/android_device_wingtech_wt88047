@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017-2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -112,9 +113,6 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
-# Lineage HW
-BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
-
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
@@ -160,11 +158,10 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
-
 include device/qcom/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/legacy-sepolicy.mk
+BOARD_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
