@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_wt88047-user
-add_lunch_combo cm_wt88047-userdebug
-add_lunch_combo cm_wt88047-eng
+add_lunch_combo aosp_wt88047-user
+add_lunch_combo aosp_wt88047-userdebug
+add_lunch_combo aosp_wt88047-eng
