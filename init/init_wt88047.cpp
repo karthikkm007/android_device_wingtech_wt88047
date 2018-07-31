@@ -33,7 +33,6 @@
 #include <android-base/file.h>
 #include <android-base/strings.h>
 
-#include "property_service.h"
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
@@ -55,17 +54,6 @@
 static char board_id[32];
 
 static void import_kernel_nv(const std::string& key, const std::string& value, bool for_emulator) {
-
-    char board_value[32];
-    const char s[2] = ":";
-    char *final_value;
-
-    if (key == "board_id") {
-	strlcpy(board_value, value.c_str(), sizeof(board_value));
-	final_value = strtok(board_value, s);
-	strlcpy(board_id, final_value, sizeof(board_id));
-    }
-}
 
     char in_str[32], *board_value, *ptr;
     int count = 0;
@@ -123,11 +111,8 @@ static void import_cmdline(const std::string& name, bool for_emulator)
 
 void init_target_properties()
 {
-    char modem_version[IMG_VER_BUF_LEN];
-    int rc;
-
     std::string product = property_get("ro.product.name");
-    if ((strstr(product.c_str(), "wt88047") == NULL))
+    if (strstr(product.c_str(), "wt88047") == NULL)
         return;
 
     import_entire_kernel_cmdline(0, import_cmdline);
