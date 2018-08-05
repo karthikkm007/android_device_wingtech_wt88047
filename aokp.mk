@@ -32,6 +32,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Build fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="sagit-user 8.0.0 OPR1.170623.027 V9.2.3.0.OCAMIEK release-keys"
+    PRIVATE_BUILD_DESC="marlin-user 8.1.0 OPM4.171019.021.P1 4820305 release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.2.3.0.OCAMIEK:user/release-keys
+BUILD_FINGERPRINT := google/marlin/marlin:8.1.0/OPM4.171019.021.P1/4820305:user/release-keys
