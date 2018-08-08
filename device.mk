@@ -236,10 +236,6 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libboringssl-compat
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
-
 # Build libstlport for vendor blobs
 PRODUCT_PACKAGES += \
     libstlport
@@ -287,12 +283,9 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.multisim.config=dsds \
     persist.radio.custom_ecc=1 \
     persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118 \
     persist.radio.ecc_hard_count=1 \
-    rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
-    ril.subscription.types=RUIM \
     persist.radio.rat_on=combine \
     ro.ril.multi_rat_capable=true
 
