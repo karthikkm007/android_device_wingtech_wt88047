@@ -125,7 +125,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
     ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := false
+      WITH_DEXPREOPT := true
     endif
   endif
 endif
@@ -226,6 +226,9 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Tap-to-Wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
+
+#enabling IMS for this target
+TARGET_USES_IMS := true
 
 # inherit from the proprietary version
 include vendor/xiaomi/wt88047/BoardConfigVendor.mk

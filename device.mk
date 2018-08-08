@@ -291,7 +291,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.custom_ecc=1 \
     persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118 \
     persist.radio.ecc_hard_count=1 \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
+    rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=RUIM \
     persist.radio.rat_on=combine \
     ro.ril.multi_rat_capable=true
@@ -329,20 +329,9 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
-# IMS
-PRODUCT_PACKAGES += \
-    ims \
-    imscmlibrary \
-    imssettings \
-    init.qti.ims.sh
-
 # IMSEnabler
 PRODUCT_PACKAGES += \
-   IMSEnabler \
-   libshim_parcel \
-   libshim_boringssl \
-   libshims_camera \
-   libshims_ims
+   IMSEnabler 
 
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/ims/ims.xml:system/etc/permissions/ims.xml 
