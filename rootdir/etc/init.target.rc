@@ -53,6 +53,12 @@ service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start vendor.imsdatadaemon
 
+# HAX for IMS
+service ims-hax /system/vendor/bin/init.qcom.ims-hax.sh
+    class late_start
+    user root
+    oneshot
+
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.qcom
