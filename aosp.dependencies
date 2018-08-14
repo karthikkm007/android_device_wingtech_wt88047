@@ -1,14 +1,14 @@
 [
   {
     "remote":  "github",
-    "repository":  "LineageOS/android_kernel_wingtech_msm8916",
+    "repository":  "MkfsSion/android_kernel_wingtech_msm8916",
     "target_path":  "kernel/wingtech/msm8916",
-    "branch":  "lineage-15.1"
+    "branch":  "lineage-16.0"
   },
   {
     "remote":  "github",
     "repository":  "MkfsSion/vendor_wingtech_wt88047",
     "target_path":  "vendor/wingtech",
-    "branch":  "8.1"
+    "branch":  "pie"
   }
 ]
