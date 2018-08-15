@@ -153,4 +153,5 @@ void init_target_properties()
     property_set("dalvik.vm.heaptargetutilization", "0.75");
     property_set("dalvik.vm.heapminfree", "512k");
     property_set("dalvik.vm.heapmaxfree", "8m");
+    property_set("persist.service.bdroid.bdaddr", "22:22:67:c6:69:73");
 }
