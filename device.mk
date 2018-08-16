@@ -101,8 +101,6 @@ PRODUCT_PACKAGES += \
     init.qcom.ssr.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc \
-    init.qcom.ims.rc \
-    init.qti.ims.sh \
     init.qcom.bt.sh \
     init.qcom.usb.rc \
     fstab.qcom \
