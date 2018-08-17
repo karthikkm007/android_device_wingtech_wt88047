@@ -27,7 +27,7 @@
 
 on init
     # Shims
-    export LD_SHIM_LIBS "/system/vendor/lib/libflp.so|libshims_flp.so:/system/vendor/lib/libizat_core.so|libshims_get_process_name.so:/system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so"
+    export LD_SHIM_LIBS "/vendor/lib/libflp.so|libshims_flp.so:/vendor/lib/libizat_core.so|libshims_get_process_name.so:/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so"
 
 on boot
     # Torch
@@ -38,13 +38,13 @@ on boot
     write /sys/block/mmcblk0/bdi/read_ahead_kb 128
 
 
-service imsqmidaemon /system/vendor/bin/imsqmidaemon
+service imsqmidaemon /vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log oem_2950
 
-service imscmservice /system/vendor/bin/imscmservice
+service imscmservice /vendor/bin/imscmservice
     class main
     user system
     group radio oem_2950 log
@@ -53,7 +53,7 @@ service imscmservice /system/vendor/bin/imscmservice
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start imscmservice
 
-service imsdatadaemon /system/vendor/bin/imsdatadaemon
+service imsdatadaemon /vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
