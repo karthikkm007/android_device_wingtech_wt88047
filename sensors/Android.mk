@@ -29,6 +29,7 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libutils
 
 LOCAL_MODULE := sensors.$(TARGET_DEVICE)
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 
 # Export calibration library needed dependency headers
 LOCAL_COPY_HEADERS_TO := sensors/inc
@@ -51,6 +52,7 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
 
@@ -63,6 +65,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
 LOCAL_SRC_FILES := calmodule.cfg
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_PREBUILT)
 
