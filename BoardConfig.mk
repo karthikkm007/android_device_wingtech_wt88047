@@ -122,16 +122,8 @@ BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Dex
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
-
-# Display
+WITH_DEXPREOPT := false
+#display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -229,6 +221,9 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 #enabling IMS for this target
 TARGET_USES_IMS := true
+
+# Needed for VoLTE
+AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 
 # inherit from the proprietary version
 include vendor/xiaomi/wt88047/BoardConfigVendor.mk
