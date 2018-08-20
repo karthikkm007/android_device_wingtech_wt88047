@@ -62,3 +62,9 @@ service imsdatadaemon /system/vendor/bin/imsdatadaemon
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
+
+service qti_ims /system/vendor/bin/init.qti.ims.sh
+    class core
+    user radio
+    group radio
+    oneshot
