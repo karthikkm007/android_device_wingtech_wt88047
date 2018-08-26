@@ -153,8 +153,16 @@ USE_OPENGL_RENDERER := true
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk
 #include device/qcom/sepolicy/legacy-sepolicy.mk
+
 #BOARD_SEPOLICY_DIRS += \
 #    $(DEVICE_PATH)/sepolicy
+
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/lib/libc.so|libshims_bionic.so \
+    /system/vendor/lib/libflp.so|libshims_flp.so \
+    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so 
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
