@@ -260,4 +260,8 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     sensors.wt88047
 
+#Launcher
+PRODUCT_PACKAGES += \
+    Launcher3
+
 include device/wingtech/wt88047/default-prop.mk
