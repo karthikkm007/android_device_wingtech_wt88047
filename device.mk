@@ -270,4 +270,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-common
 
+# Charger
+PRODUCT_PACKAGES += \
+    chargeonlymode
+
 include device/wingtech/wt88047/default-prop.mk
