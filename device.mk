@@ -346,9 +346,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
-include device/wingtech/wt88047/default-prop.mk
+# Charger
+PRODUCT_PACKAGES += \
+    chargeonlymode
 
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
+
+include device/wingtech/wt88047/default-prop.mk

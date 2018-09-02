@@ -352,9 +352,9 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service charger /charger
+service charger /sbin/chargeonlymode
     class charger
-    group log
+    group system graphics log
     seclabel u:r:charger:s0
 
 service ssr_diag /system/vendor/bin/ssr_diag
