@@ -202,6 +202,10 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# IMSEnabler
+PRODUCT_PACKAGES += \
+    IMSEnabler
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \

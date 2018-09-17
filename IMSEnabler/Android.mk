@@ -1,4 +1,4 @@
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
@@ -12,5 +12,7 @@ LOCAL_PACKAGE_NAME := IMSEnabler
 
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
+
+LOCAL_PRIVATE_PLATFORM_APIS := true
 
 include $(BUILD_PACKAGE)
