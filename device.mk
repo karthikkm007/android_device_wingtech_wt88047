@@ -260,4 +260,8 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     sensors.wt88047
 
+# ims
+PRODUCT_PACKAGES += \
+    ims-common
+
 include device/wingtech/wt88047/default-prop.mk
