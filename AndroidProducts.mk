@@ -14,4 +14,4 @@
 # # limitations under the License.
 #
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/pixys_wt88047.mk
+	$(LOCAL_DIR)/arrow_wt88047.mk
