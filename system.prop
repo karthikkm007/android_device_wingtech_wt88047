@@ -97,4 +97,3 @@ ro.lineage.build.vendor_security_patch=2017-01-01
 # IMS
 persist.ims.enableADBLogs=1
 persist.ims.enableDebugLogs=1
-persist.ims.enabler.enabled=true
