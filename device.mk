@@ -236,6 +236,10 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Telephony
+PRODUCT_PACKAGES += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.aw2013
