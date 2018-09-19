@@ -169,8 +169,8 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 #enabling IMS for this target
 TARGET_USES_IMS := true
 
-# Deodex system
-WITH_DEXPREOPT := false
+# odex system for a faster boot
+WITH_DEXPREOPT := true
 
 # Vendor
 include vendor/wingtech/wt88047/BoardConfigVendor.mk
