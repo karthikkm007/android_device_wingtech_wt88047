@@ -15,8 +15,8 @@
 
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
 
-# Inherit some common PIXYS stuff.
-$(call inherit-product, vendor/pixys/config/common_full_phone.mk)
+# Inherit some common ARROW stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
