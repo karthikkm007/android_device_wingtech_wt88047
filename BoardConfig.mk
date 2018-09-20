@@ -52,8 +52,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
 TARGET_DESTROYED_MUTEX_USAGE_WHITELIST := system/vendor/bin/mm-qcamera-daemon
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-	/system/vendor/bin/mm-qcamera-daemon=23
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
+    /system/bin/mediaserver=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
