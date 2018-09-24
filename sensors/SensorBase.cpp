@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2016 The Linux Foundation. All rights reserved.
+ * Copyright (c) 2014, The Linux Foundation. All rights reserved.
  * Not a Contribution.
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -37,22 +37,13 @@ SensorBase::SensorBase(
         const char* dev_name,
         const char* data_name,
         const struct SensorContext* context /* = NULL */)
-        : dev_name(dev_name), data_name(data_name), algo(NULL),
-        dev_fd(-1), data_fd(-1), mEnabled(0), mHasPendingMetadata(0)
+    : dev_name(dev_name), data_name(data_name),
+      algo(NULL), dev_fd(-1), data_fd(-1)
 {
         if (context != NULL) {
                 CalibrationManager& cm(CalibrationManager::getInstance());
-                algo = cm.getCalAlgo(context->sensor);
-
-                /* Set up the sensors_meta_data_event_t event*/
-                meta_data.version = META_DATA_VERSION;
-                meta_data.sensor = context->sensor->handle;
-                meta_data.type = SENSOR_TYPE_META_DATA;
-                meta_data.reserved0 = 0;
-                meta_data.timestamp = 0LL;
-                meta_data.meta_data.what = META_DATA_FLUSH_COMPLETE;
-                meta_data.meta_data.sensor = context->sensor->handle;
-        }
+		algo = cm.getCalAlgo(context->sensor);
+	}
 
         if (data_name) {
                 data_fd = openInput(data_name);
@@ -106,10 +97,6 @@ int64_t SensorBase::getTimestamp() {
     return int64_t(t.tv_sec)*1000000000LL + t.tv_nsec;
 }
 
-int64_t SensorBase::getClkOffset() {
-    return (getTimestamp() - android::elapsedRealtimeNano());
-}
-
 int SensorBase::openInput(const char* inputName) {
     int fd = -1;
     const char *dirname = "/dev/input";
@@ -120,15 +107,15 @@ int SensorBase::openInput(const char* inputName) {
     dir = opendir(dirname);
     if(dir == NULL)
         return -1;
-    strlcpy(devname, dirname, PATH_MAX);
-    filename = devname + strlen(dirname);
+    strcpy(devname, dirname);
+    filename = devname + strlen(devname);
     *filename++ = '/';
     while((de = readdir(dir))) {
         if(de->d_name[0] == '.' &&
                 (de->d_name[1] == '\0' ||
                         (de->d_name[1] == '.' && de->d_name[2] == '\0')))
             continue;
-        strlcpy(filename, de->d_name, PATH_MAX - strlen(SYSFS_CLASS));
+        strcpy(filename, de->d_name);
         fd = open(devname, O_RDONLY);
         if (fd>=0) {
             char name[80];
@@ -136,7 +123,7 @@ int SensorBase::openInput(const char* inputName) {
                 name[0] = '\0';
             }
             if (!strcmp(name, inputName)) {
-                strlcpy(input_name, filename, PATH_MAX);
+                strcpy(input_name, filename);
                 break;
             } else {
                 close(fd);
@@ -151,93 +138,16 @@ int SensorBase::openInput(const char* inputName) {
 
 int SensorBase::injectEvents(sensors_event_t*, int)
 {
-        ALOGW("injectEvents is not implemented");
-        return 0;
+	return 0;
 }
 
-int SensorBase::calibrate(int32_t, struct cal_cmd_t*,
-                 struct cal_result_t*)
+int SensorBase::calibrate(int32_t, struct cal_cmd_t *,
+                 struct cal_result_t *)
 {
-        return -1;
+    return -1;
 }
 
-int SensorBase::initCalibrate(int32_t, struct cal_result_t*)
+int SensorBase::initCalibrate(int32_t, struct cal_result_t *)
 {
-        return -1;
+    return -1;
 }
-
-int SensorBase::setLatency(int32_t, int64_t latency_ns)
-{
-        int fd;
-        int latency_ms;
-        ssize_t len;
-        char buf[80];
-
-        if ((latency_ns / 1000000ULL) >= ((1ULL << 31) - 1))
-                return -EINVAL;
-
-        latency_ms = latency_ns / 1000000;
-        strlcpy(&input_sysfs_path[input_sysfs_path_len],
-                        SYSFS_MAXLATENCY, SYSFS_MAXLEN);
-        fd = open(input_sysfs_path, O_RDWR);
-        if (fd < 0) {
-                ALOGE("open %s failed.(%s)", input_sysfs_path, strerror(errno));
-                return -1;
-        }
-
-        snprintf(buf, sizeof(buf), "%d", latency_ms);
-        len = write(fd, buf, strlen(buf) + 1);
-        if (len < (ssize_t)strlen(buf) + 1) {
-                ALOGE("write %s:%s failed.(%s)", input_sysfs_path, buf, strerror(errno));
-                close(fd);
-                return -1;
-        }
-
-        close(fd);
-        return 0;
-}
-
-int SensorBase::flush(int32_t handle)
-{
-        int fd;
-        const char *buf = "1";
-        int len;
-
-        NativeSensorManager& sm(NativeSensorManager::getInstance());
-        struct SensorContext* ctx = sm.getInfoByHandle(handle);
-
-        /* The SensorService will call
-         * batch->flush(not call for the first connection)->activiate
-         * Note the number of FLUSH_COMPLETE events should be the
-         * same as the number of *flush* called.
-         */
-
-        /* Should return -EINVAL if the sensor is not enabled */
-        if ((!mEnabled) || (ctx == NULL) || (ctx->sensor->flags & SENSOR_FLAG_ONE_SHOT_MODE)) {
-                ALOGE("handle:%d mEnabled:%d ctx:%p\n", handle, mEnabled, ctx);
-                return -EINVAL;
-        }
-
-        /* sensors have FIFO: call into driver */
-        if (ctx->sensor->fifoMaxEventCount) {
-                strlcpy(&input_sysfs_path[input_sysfs_path_len],
-                                SYSFS_FLUSH, SYSFS_MAXLEN);
-                fd = open(input_sysfs_path, O_RDWR);
-                if (fd < 0) {
-                        ALOGE("open %s failed.(%s)", input_sysfs_path, strerror(errno));
-                        return -1;
-                }
-
-                len = write(fd, buf, strlen(buf)+1);
-                if (len < (ssize_t)strlen(buf) + 1) {
-                        ALOGE("write %s failed.(%s)", input_sysfs_path, strerror(errno));
-                        close(fd);
-                        return -1;
-                }
-                close(fd);
-        }
-
-        mHasPendingMetadata++;
-        return 0;
-}
-
