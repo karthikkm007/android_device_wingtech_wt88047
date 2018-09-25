@@ -48,6 +48,7 @@
 
 GyroSensor::GyroSensor()
 	: SensorBase(NULL, GYRO_INPUT_DEV_NAME),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mIsFirstTimestamp(false),
@@ -69,7 +70,8 @@ GyroSensor::GyroSensor()
 }
 
 GyroSensor::GyroSensor(struct SensorContext *context)
-	: SensorBase(NULL, NULL, context),
+	: SensorBase(NULL, NULL),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mIsFirstTimestamp(false),
@@ -93,6 +95,7 @@ GyroSensor::GyroSensor(struct SensorContext *context)
 
 GyroSensor::GyroSensor(char *name)
 	: SensorBase(NULL, GYRO_INPUT_DEV_NAME),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mIsFirstTimestamp(false),
@@ -260,19 +263,16 @@ again:
 					}
 				break;
 				case SYN_REPORT:
-					if(mUseAbsTimeStamp != true) {
-						mPendingEvent.timestamp = timevalToNano(event->time);
-					}
-					if (!mEnabled) {
-						break;
-					}
-
-					mPendingEvent.timestamp -= sysclk_sync_offset;
-					raw = mPendingEvent;
-					if (algo != NULL) {
-						if (algo->methods->convert(&raw, &result, NULL)) {
-							ALOGE("Calibrated failed\n");
-							result = raw;
+					{
+						if(mUseAbsTimeStamp != true) {
+							mPendingEvent.timestamp = timevalToNano(event->time);
+						}
+						if (mEnabled) {
+							if(mPendingEvent.timestamp >= mEnabledTime) {
+								*data++ = mPendingEvent;
+								numEventReceived++;
+							}
+							count--;
 						}
 					} else {
 						result = raw;

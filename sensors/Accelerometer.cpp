@@ -50,6 +50,7 @@
 
 AccelSensor::AccelSensor()
 	: SensorBase(NULL, "accelerometer"),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mAbsEventReceived(false),
@@ -72,6 +73,7 @@ AccelSensor::AccelSensor()
 
 AccelSensor::AccelSensor(char *name)
 	: SensorBase(NULL, "accelerometer"),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mAbsEventReceived(false),
@@ -94,7 +96,8 @@ AccelSensor::AccelSensor(char *name)
 }
 
 AccelSensor::AccelSensor(SensorContext *context)
-	: SensorBase(NULL, NULL, context),
+	: SensorBase(NULL, NULL),
+	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
 	  mAbsEventReceived(false),
@@ -245,10 +248,11 @@ again:
 						if(mUseAbsTimeStamp != true) {
 							mPendingEvent.timestamp = timevalToNano(event->time);
 						}
-						mPendingEvent.timestamp -= sysclk_sync_offset;
-						if (mEnabled && mAbsEventReceived) {
-							*data++ = mPendingEvent;
-							numEventReceived++;
+						if (mEnabled) {
+							if(mPendingEvent.timestamp >= mEnabledTime) {
+								*data++ = mPendingEvent;
+								numEventReceived++;
+							}
 							count--;
 						}
 					}
