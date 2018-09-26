@@ -226,9 +226,7 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
