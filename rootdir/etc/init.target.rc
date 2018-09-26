@@ -36,12 +36,6 @@ on boot
     chown system camera /sys/class/leds/torch-light/brightness
     chmod 0660 /sys/class/leds/torch-light/brightness
 
-    # charger
-    chown root system /sys/class/power_supply/bms/current_now
-    chown root system /sys/class/power_supply/bms/voltage_ocv
-    chmod 0664 /sys/class/power_supply/bms/current_now
-    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-
     # LEDs
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/red/led_time
@@ -59,16 +53,3 @@ on boot
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
     swapon_all /fstab.qcom
-
-on charger
-    wait /dev/block/bootdevice/by-name/system
-    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
-    chown root system /sys/class/power_supply/bms/current_now
-    chown root system /sys/class/power_supply/bms/voltage_ocv
-    chmod 0664 /sys/class/power_supply/bms/current_now
-    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-    start vm_bms
- service vm_bms /system/vendor/bin/vm_bms
-    class core
-    user root
-    group root
