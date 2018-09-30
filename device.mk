@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/wingtech/wt88047/wt88047-vendor.mk)
+$(call inherit-product, vendor/wingtech64/wt88047_64/wt88047-vendor.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
