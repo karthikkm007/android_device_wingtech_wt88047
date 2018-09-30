@@ -14,7 +14,7 @@
 # limitations under the License.
 
 TARGET_BOARD_PLATFORM := msm8916
-FORCE_32_BIT := true
+#FORCE_32_BIT := true
 DEVICE_PATH := device/wingtech/wt88047
 
 # ANT+
