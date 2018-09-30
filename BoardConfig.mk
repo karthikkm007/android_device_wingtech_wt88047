@@ -141,7 +141,8 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
-BOARD_CACHEIMAGE_PARTITION_SIZE := 335544320
+BOARD_CACHEIMAGE_PARTITION_SIZE := 65180000
+BOARD_VENDORIMAGE_PARTITION_SIZE := 335544320
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
@@ -151,6 +152,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDORIMAGE := true
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -184,9 +187,9 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib/libflp.so|libshims_flp.so \
-    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
+    /vendor/lib64/libflp.so|libshims_flp.so \
+    /vendor/lib64/libizat_core.so|libshims_get_process_name.so \
+    /vendor/lib64/libmmcamera2_imglib_modules.so|libshim_camera.so \
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
