@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/wingtech64/wt88047_64/wt88047-vendor.mk)
+$(call inherit-product, vendor/wingtech64/wt88047_64/wt88047_64-vendor.mk)
 $(call inherit-product, vendor/volte/lettuce/lettuce-vendor.mk)
 $(call inherit-product, vendor/volte/volte.mk)
 
