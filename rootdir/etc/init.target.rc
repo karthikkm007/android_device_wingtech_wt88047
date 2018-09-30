@@ -26,6 +26,7 @@
 #
 
 import init.target.power.rc
+import init.qcom.ims.rc
 
 on boot
     # Torch

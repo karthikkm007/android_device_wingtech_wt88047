@@ -30,4 +30,4 @@ endif
 
 
 # Proprietary
-$(call add-radio-file,../../../vendor/volte/wt88047/radio/NON-HLOS.bin)
+$(call add-radio-file,../../../vendor/volte/lettuce/radio/NON-HLOS.bin)
