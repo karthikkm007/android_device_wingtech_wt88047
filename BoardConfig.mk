@@ -189,8 +189,8 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 TARGET_LD_SHIM_LIBS := \
     /vendor/lib64/libflp.so|libshims_flp.so \
     /vendor/lib64/libizat_core.so|libshims_get_process_name.so \
-    /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so 
-    /vendor/lib64/libmmcamera2_imglib_modules.so|libshim_camera.so \
+    /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
+    /vendor/lib64/libmmcamera2_imglib_modules.so|libshim_camera.so 
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
