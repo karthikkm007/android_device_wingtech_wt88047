@@ -29,5 +29,5 @@ $(foreach f, $(RADIO_FILES), \
 endif
 
 
-# Proprietary
-$(call add-radio-file,../../../vendor/volte/lettuce/radio/NON-HLOS.bin)
+# Proprietary //probably its not needed
+$(call add-radio-file,../../../vendor/volte/wt88047/radio/NON-HLOS.bin)
