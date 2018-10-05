@@ -209,5 +209,5 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
-include vendor/wingtech64/wt88047_64/BoardConfigVendor.mk
+include vendor/wingtech/wt88047/BoardConfigVendor.mk
 include device/wingtech/wt88047/radio.mk
