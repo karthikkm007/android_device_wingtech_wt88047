@@ -15,8 +15,8 @@
 
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
 
-# Inherit some common AOKP stuff.
-$(call inherit-product, vendor/aosp/config/common.mk)
+# Inherit some common AOSP EXTENDED stuff.
+$(call inherit-product, vendor/aosp/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
