@@ -222,6 +222,13 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# RCS
+PRODUCT_PACKAGES += \
+    rcs_service_aidl \
+    rcs_service_aidl.xml \
+    rcs_service_api \
+    rcs_service_api.xml
+
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_cm
@@ -234,13 +241,14 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
-# FS_CONFIG
+# Telephony / IMS
 PRODUCT_PACKAGES += \
-    fs_config_files
+    ims-ext-common \
+    telephony-ext \
+    libandroid_net
 
-# Telephony
-PRODUCT_PACKAGES += telephony-ext ims-ext-common
-PRODUCT_BOOT_JARS += telephony-ext
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Lights
 PRODUCT_PACKAGES += \

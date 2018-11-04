@@ -233,4 +233,32 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>com.qualcomm.qti.imscmservice</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IImsCmService</name>
+            <instance>qti.ims.connectionmanagerservice</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.ims</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IImsRadio</name>
+            <instance>imsradio0</instance>
+            <instance>imsradio1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.imsrtpservice</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IRTPService</name>
+            <instance>imsrtpservice</instance>
+        </interface>
+    </hal>
 </manifest>
