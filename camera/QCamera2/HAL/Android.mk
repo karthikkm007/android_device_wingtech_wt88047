@@ -52,7 +52,7 @@ ifeq ($(TARGET_TS_MAKEUP),true)
 LOCAL_CFLAGS += -DTARGET_TS_MAKEUP
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/tsMakeuplib/include
 endif
-LOCAL_ADDITIONAL_DEPENDENCIES := INSTALLED_KERNEL_HEADERS
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libqdMetaData 
