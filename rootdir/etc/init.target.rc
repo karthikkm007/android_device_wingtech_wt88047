@@ -82,8 +82,8 @@ service vendor.imsrcsservice /system/vendor/bin/imsrcsd
     start ims_rtp_daemon
     start vendor.imsrcsservice
 
-# HAX for IMS
-service ims-hax /system/vendor/bin/init.qcom.ims-hax.sh
-    class late_start
-    user root
+service qti_ims /system/vendor/bin/init.qti.ims.sh
+    class core
+    user radio
+    group radio
     oneshot
