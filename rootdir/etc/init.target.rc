@@ -30,9 +30,6 @@ on init
     setprop service.qti.ims.enabled 1
     setprop vendor.service.qti.ims.enabled 1
 
-    # Set zRAM compression algo to LZ4
-    write /sys/block/zram0/comp_algorithm lz4
-
 on boot
     # Torch
     chown system camera /sys/class/leds/torch-light/brightness
@@ -41,20 +38,24 @@ on boot
     write /sys/block/mmcblk0/queue/add_random 0
     write /sys/block/mmcblk0/bdi/read_ahead_kb 128
 
-service vendor.imscmservice /system/vendor/bin/imscmservice
-    class main
-    user system
-    group radio net_raw oem_2950 log
-    disabled
+# HAX for IMS
+service ims-hax /system/vendor/bin/init.qcom.ims-hax.sh
+    class late_start
+    user root
+    oneshot
 
-    on property:vendor.sys.ims.DATA_DAEMON_STATUS=1
-    start vendor.imscmservice
+service qti_ims /system/vendor/bin/init.qti.ims.sh
+    class core
+    user radio
+    group radio
+    oneshot
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio log oem_2950
+    group radio net_raw log oem_2950
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
@@ -63,16 +64,19 @@ service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     group system wifi radio inet log oem_2950
     disabled
 
-    on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start vendor.imsdatadaemon
 
 service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
-    class main
-    user system
-    group radio oem_2950 log inet
-    disabled
+   class main
+   user system
+   socket ims_rtpd stream 0660 system radio
+   group radio net_raw oem_2950 inet log
 
-service vendor.imsrcsservice /system/vendor/bin/imsrcsd
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    restart vendor.ims_rtp_daemon
+
+service vendor.imscmservice /system/vendor/bin/imscmservice
     class main
     user system
     group radio oem_2950 inet log 

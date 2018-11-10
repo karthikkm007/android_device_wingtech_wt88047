@@ -50,50 +50,16 @@ ro.min_freq_0=800000
 
 # RIL
 persist.data.qmi.adb_logmask=0
-persist.data.target=dpm1
-persist.radio.add_power_save=1
 persist.radio.apm_sim_not_pwdn=1
-persist.radio.cs_srv_type=1
-persist.radio.flexmap_type=nw_mode
-persist.radio.lte_vrte_ltd=1
-persist.radio.multisim.config=dsds
-persist.radio.no_cons_man_roam=1
-persist.radio.process_sups_ind=1
-persist.radio.rat_on=combine
-persist.radio.schd.cache=3500
-persist.radio.sib16_support=1
-persist.radio.vrte_logic=1
-ril.ecclist1=000,08,100,101,102,110,112,118,119,120,122,911,999
-ril.ecclist=000,08,100,101,102,110,112,118,119,120,122,911,999
-rild.libargs=-d /dev/smd0
-rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
-ro.config.always_show_roaming=true
+persist.vendor.radio.apm_sim_not_pwdn=1
 ro.telephony.call_ring.multiple=false
-ro.telephony.default_network=9,9
-vendor.rild.libargs=-d /dev/smd0
-vendor.rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
-DEVICE_PROVISIONED=1
-
-# IMS
-persist.data.iwlan.enable=true
-persist.dbg.ims_volte_enable=1
-persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
-persist.dbg.wfc_avail_ovr=1
-persist.radio.calls.on.ims=true
-persist.radio.csvt.enabled=false
-persist.radio.videopause.mode=1
-persist.rcs.presence.provision=0
-persist.rcs.supported=0
-persist.vendor.ims.disableADBLogs=0
-persist.vendor.ims.disableDebugLogs=0
-persist.vendor.ims.disableDebugDataPathLogs=0
-persist.vendor.ims.disableIMSLogs=0
-persist.vendor.ims.disableUserAgent=0
-persist.vendor.ims.dropset_feature=0
-persist.vendor.ims.no_stapa=1
-persist.vendor.ims.vt.enableadb=1
-persist.vendor.qti.telephony.vt_cam_interface=1
+persist.data.target=dpm1
+persist.radio.multisim.config=dsds
+persist.radio.custom_ecc=1
+persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118
+persist.radio.ecc_hard_count=1
+rild.libpath=/vendor/lib/libril-qc-qmi-1.so
+ril.subscription.types=RUIM
 
 # WIFI
 wifi.interface=wlan0
