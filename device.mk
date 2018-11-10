@@ -263,10 +263,6 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     sensors.wt88047
 
-# ims
-PRODUCT_PACKAGES += \
-    ims-common
-
 # Charger
 PRODUCT_PACKAGES += \
     chargeonlymode
