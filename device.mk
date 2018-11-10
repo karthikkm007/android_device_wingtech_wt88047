@@ -267,4 +267,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     chargeonlymode
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common
+
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 include device/wingtech/wt88047/default-prop.mk
