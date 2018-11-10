@@ -246,8 +246,8 @@ PRODUCT_PACKAGES += \
     telephony-ext \
     libandroid_net
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+# Telephony
+PRODUCT_BOOT_JARS += telephony-ext
 
 # Lights
 PRODUCT_PACKAGES += \
