@@ -78,6 +78,14 @@ service vendor.imscmservice /system/vendor/bin/imscmservice
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     start imscmservice
 
+service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio oem_2950 log inet
+   disabled
+   
+   start ims_rtp_daemon
+
 service qti_ims /vendor/bin/init.qti.ims.sh
     class core
     user radio
