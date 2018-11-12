@@ -69,15 +69,6 @@ on property:vendor.ims.QMI_DAEMON_STATUS=1
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     start vendor.imsrcsservice
 
-service vendor.imscmservice /system/vendor/bin/imscmservice
-    class main
-    user system
-    group radio net_raw oem_2950 log
-    disabled
-
-on property:vendor.ims.DATA_DAEMON_STATUS=1
-    start imscmservice
-
 service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
    user system
