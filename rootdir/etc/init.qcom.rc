@@ -440,3 +440,11 @@ on property:sys.boot_completed=1
     restart ril-daemon
     restart ril-daemon2
     restart netmgrd
+
+    # Improve performance and stability, fix freq sets
+
+    # 533 MHz min freq for all cores
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 533333
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 533333
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 533333
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 533333
