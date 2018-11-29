@@ -79,7 +79,6 @@ persist.vendor.ims.disableDebugLogs=0
 persist.vendor.ims.disableDebugDataPathLogs=0
 persist.vendor.ims.disableIMSLogs=0
 persist.vendor.ims.vt.enableadb=1
-persist.vendor.radio.jbims=1
 persist.vendor.qti.telephony.vt_cam_interface=1
 
 # WIFI
