@@ -113,3 +113,6 @@ ro.fusion.magfield.max=250
 
 # Vendor security patch level
 ro.lineage.build.vendor_security_patch=2017-01-01
+
+# system props for the cne module
+persist.cne.feature=1
