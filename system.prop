@@ -116,3 +116,9 @@ ro.lineage.build.vendor_security_patch=2017-01-01
 
 # system props for the cne module
 persist.cne.feature=1
+
+# system props for the data modules
+#
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
