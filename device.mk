@@ -246,7 +246,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
-    camera.device@1.0-impl \
     camera.device@3.2-impl \
     camera.msm8916 \
     libmm-qcamera \
@@ -282,9 +281,5 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
-
-# Enable extra vendor libs
-ENABLE_EXTRA_VENDOR_LIBS := true
-PRODUCT_PACKAGES += vendor-extra-libs
 
 include device/wingtech/wt88047/default-prop.mk
