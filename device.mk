@@ -106,7 +106,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     fstab.qcom \
     init.target.rc \
-    init.qcom.ims-hax.sh
+    init.qti.ims.sh
 
 # Shims
 PRODUCT_PACKAGES += \
