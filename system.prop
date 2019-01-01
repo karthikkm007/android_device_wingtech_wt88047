@@ -119,9 +119,5 @@ ro.fusion.magfield.max=250
 # Vendor security patch level
 ro.lineage.build.vendor_security_patch=2017-01-01
 
-# CNE
-persist.vendor.cne.override.memlimit=1
-persist.vendor.cne.feature=1
-
 #HWUI properties
 ro.hwui.text_large_cache_height=2048
