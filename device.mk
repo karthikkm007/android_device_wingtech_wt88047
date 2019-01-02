@@ -283,9 +283,4 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# AOSP packages required by the blobs
-PRODUCT_PACKAGES := \
-    com.android.ims.rcsmanager.xml \
-    com.android.ims.rcsmanager
-
 include device/wingtech/wt88047/default-prop.mk
