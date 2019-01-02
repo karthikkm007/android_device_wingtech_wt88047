@@ -283,4 +283,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# IMS ( Vendor )
+PRODUCT_PACKAGES += \
+    ims \
+    shutdownlistener \
+    TimeService \
+    qcrilmsgtunnel
+
 include device/wingtech/wt88047/default-prop.mk
