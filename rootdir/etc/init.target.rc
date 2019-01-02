@@ -51,7 +51,7 @@ service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
     socket ims_qmid stream 0660 system radio
     group radio net_raw log oem_2950
 
-on property:sys.service.qti.ims.enabled=1
+on property:service.qti.ims.enabled=1
     start vendor.imsqmidaemon
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM
