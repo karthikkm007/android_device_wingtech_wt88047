@@ -288,6 +288,7 @@ PRODUCT_PACKAGES += \
     ims \
     shutdownlistener \
     TimeService \
-    qcrilmsgtunnel
+    qcrilmsgtunnel \
+    uceShimService
 
 include device/wingtech/wt88047/default-prop.mk
