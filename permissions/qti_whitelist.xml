@@ -36,6 +36,7 @@
     <allow-in-power-save package="com.qualcomm.qti.telephonyservice" />
     <allow-in-power-save package="com.qualcomm.qcrilmsgtunnel" />
     <allow-in-power-save package="com.qualcomm.qti.ims" />
+    <allow-in-power-save package="org.codeaurora.ims" />
     <allow-in-power-save package="com.qualcomm.qti.radioconfiginterface" />
     <allow-in-power-save package="com.qualcomm.simcontacts" />
     <allow-in-power-save package="com.qualcomm.qti.autoregistration" />
