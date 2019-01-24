@@ -26,6 +26,13 @@ LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_VENDOR_MODULE := true
 
+# IMS Shim
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := MediaBuffer.cpp
+LOCAL_SHARED_LIBRARIES := libui libgui libstagefright_foundation libstagefright
+LOCAL_MODULE := lib-imsvt_shim
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)

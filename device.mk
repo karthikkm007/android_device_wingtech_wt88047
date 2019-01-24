@@ -109,7 +109,8 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc \
     init.qti.ims.sh \
-    init.qcom.ril.sh
+    init.qcom.ril.sh \
+    wrap_shims.sh
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -273,7 +274,8 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common
+    ims-ext-common \
+    lib-imsvt_shim
 
 # IMS ( Vendor )
 PRODUCT_PACKAGES += \
