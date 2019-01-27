@@ -142,6 +142,9 @@ TARGET_USES_INTERACTION_BOOST := true
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
+# Radio
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 BOARD_NO_SECURE_DISCARD := true
@@ -166,7 +169,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib/libc.so|libshims_bionic.so \
     /system/vendor/lib/libflp.so|libshims_flp.so \
     /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so 
+    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
+    /system/lib/libjustshoot.so|libjustshoot_shim.so
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
