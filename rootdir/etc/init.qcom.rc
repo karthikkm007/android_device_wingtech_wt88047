@@ -419,6 +419,11 @@ service qcom-mem /system/vendor/bin/init.qcom.mem.sh
     disabled
     oneshot
 
+on property:sys.boot_completed=1
+    restart vendor.ril-daemon
+    restart vendor.ril-daemon2
+    restart vendor.ril-daemon3
+
     # Improve performance and stability, fix freq sets
 
     # 533 MHz min freq for all cores
