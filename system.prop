@@ -106,6 +106,9 @@ sys.use_fifo_ui=1
 persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
 ro.camera.sensors=ov8865_q8v18a,ov2680_skuhf,ov2680_5987fhq
+vidc.enc.narrow.searchrange=1
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
 
 # System property for Camera
 # System prop to allocate Reprocess buffer as "1"
