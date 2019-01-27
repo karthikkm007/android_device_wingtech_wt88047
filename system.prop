@@ -74,6 +74,11 @@ persist.vendor.ims.disableIMSLogs=0
 persist.vendor.ims.disableDebugDataPathLogs=0
 persist.vendor.ims.disableADBLogs=0
 persist.vendor.ims.vt.enableadb=1
+persist.radio.voice_on_lte=1
+persist.vendor.radio.lte_vrte_ltd=1
+persist.radio.lte_vrte_ltd=1
+persist.vendor.radio.voice_on_lte=1
+persist.radio.voice_on_lte=1
 
 # WIFI
 wifi.interface=wlan0
