@@ -108,7 +108,10 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     fstab.qcom \
     init.target.rc \
-    init.qti.ims.sh
+    init.qti.ims.sh \
+    qcrild.rc \
+    rild.legacy.rc \
+    vendor.rild.legacy.rc
 
 # Shims
 PRODUCT_PACKAGES += \
