@@ -338,13 +338,6 @@ service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
 service charger /sbin/chargeonlymode
     class charger
     group system graphics log
@@ -420,20 +413,10 @@ service qcom-mem /system/vendor/bin/init.qcom.mem.sh
     oneshot
 
 on property:sys.boot_completed=1
-    restart ril-daemon
     restart vendor.ril-daemon2
-    restart vendor.ril-daemon3
 
 service rild2-wrapper /vendor/bin/sh /vendor/bin/init.qcom.ril.sh
     class late_start
     user root
     group root
     oneshot
-
-    # Improve performance and stability, fix freq sets
-
-    # 533 MHz min freq for all cores
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 533333
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 533333
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 533333
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 533333
