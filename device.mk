@@ -294,6 +294,16 @@ PRODUCT_PACKAGES += \
     shutdownlistener \
     TimeService \
     qcrilmsgtunnel \
-    uceShimService
+    uceShimService \
+    android.hardware.radio.config@1.0 \
+    android.hardware.radio.deprecated@1.0 \
+    android.hardware.radio@1.0.so \
+    android.hardware.radio@1.1.so \
+    android.hardware.radio@1.2.so \
+    libandroid_net.so \
+    libqdMetaData.system.so \
+    libreference-ril.so \
+    libril.so \
+    librilutils.so
 
 include device/wingtech/wt88047/default-prop.mk
