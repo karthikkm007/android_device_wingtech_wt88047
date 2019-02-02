@@ -332,11 +332,10 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
+service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
+    group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service vendor.qcrild /vendor/bin/hw/qcrild
@@ -436,7 +435,9 @@ service qcom-mem /system/vendor/bin/init.qcom.mem.sh
     oneshot
 
 on property:sys.boot_completed=1
-    restart vendor.ril-daemon2
+    restart ril-daemon
+    restart ril-daemon2
+    restart netmgrd
 
 service rild2-wrapper /vendor/bin/sh /vendor/bin/init.qcom.ril.sh
     class late_start
