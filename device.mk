@@ -110,6 +110,8 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.qti.ims.sh \
     qcrild.rc \
+    rild.legacy.rc \
+    vendor.rild.legacy.rc \
     init.qcom.ril.sh
 
 # Shims
