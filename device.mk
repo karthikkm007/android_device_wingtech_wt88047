@@ -252,10 +252,7 @@ PRODUCT_PACKAGES += \
     camera.msm8916 \
     libmm-qcamera \
     FootejCamera \
-    Snap \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor \
-    libjustshoot_shim
+    Snap
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -304,6 +301,7 @@ PRODUCT_PACKAGES += \
     libreference-ril \
     libril \
     librilutils \
-    libdiag_system
+    libdiag_system \
+    vendor.qti.hardware.camera.device@1.0
 
 include device/wingtech/wt88047/default-prop.mk
