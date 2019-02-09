@@ -171,7 +171,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
-        <transport>hwbinder</transport>
+        <transport arch="32">passthrough</transport>
         <version>1.0</version>
         <interface>
             <name>IRadioConfig</name>

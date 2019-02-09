@@ -303,6 +303,7 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libreference-ril \
     libril \
-    librilutils
+    librilutils \
+    libdiag_system
 
 include device/wingtech/wt88047/default-prop.mk
