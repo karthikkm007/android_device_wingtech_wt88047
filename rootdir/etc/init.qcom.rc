@@ -179,18 +179,6 @@ on boot
     # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-    # copy prebuilt qcril.db files always
-    copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
-    chown radio radio /data/vendor/radio/qcril_prebuilt.db
-    chmod 0660 /data/vendor/radio/qcril_prebuilt.db
-    # File flags for prebuilt ril db file
-    write /data/vendor/radio/prebuilt_db_support 1
-    chown radio radio /data/vendor/radio/prebuilt_db_support
-    chmod 0400 /data/vendor/radio/prebuilt_db_support
-    write /data/vendor/radio/db_check_done 0
-    chown radio radio /data/vendor/radio/db_check_done
-    chmod 0660 /data/vendor/radio/db_check_done
-
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
@@ -338,28 +326,6 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service vendor.qcrild /vendor/bin/hw/qcrild
-    class main
-    user radio
-    disabled
-    socket cutback stream 660 audioserver radio
-    group radio cache inet misc audio log readproc wakelock oem_2901 net_raw wifi compass diag
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service vendor.qcrild2 /vendor/bin/hw/qcrild -c 2
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio log readproc wakelock oem_2901
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service vendor.qcrild3 /vendor/bin/hw/qcrild -c 3
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio log readproc wakelock oem_2901
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
 service charger /sbin/chargeonlymode
     class charger
     group system graphics log
@@ -403,13 +369,6 @@ service time_daemon /system/vendor/bin/time_daemon
    user root
    group root
    writepid /dev/cpuset/system-background/tasks
-
-# Set vendor-ril lib path based on Meta version
-on property:vendor.rild.libpath=*
-    setprop rild.libpath ${vendor.rild.libpath}
-
-on property:ro.vendor.radio.noril=*
-    setprop ro.radio.noril ${ro.vendor.radio.noril}
 
 service ppd /system/vendor/bin/mm-pp-daemon
     class late_start

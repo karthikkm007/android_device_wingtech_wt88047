@@ -1,6 +1,1 @@
-# To improve app launch times - we would like to force all tasks to
-# run on big cores for app launch (sched_boost) - instead of just
-# boosting them to make it "more likely" to run on big cores.
-allow system_server domain:process setsched;
 set_prop(system_server, compass_prop)
-dontaudit system_server dalvikcache_data_file:file { execute write };
