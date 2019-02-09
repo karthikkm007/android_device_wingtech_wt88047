@@ -3059,8 +3059,7 @@ int32_t QCameraParameters::setMeteringAreas(const QCameraParameters& params)
 
         const char *prev_str = get(KEY_METERING_AREAS);
         if (prev_str == NULL ||
-            strcmp(str, prev_str) != 0 ||
-            (m_bNeedRestart == true)) {
+            strcmp(str, prev_str) != 0) {
             return setMeteringAreas(str);
         }
     }
@@ -5145,7 +5144,7 @@ int32_t QCameraParameters::initDefaultParameters()
     // Livesnapshot is not supported for 4K2K video resolutions
     set(KEY_QC_4K2K_LIVESNAP_SUPPORTED, VALUE_FALSE);
     //Set video buffers as uncached by default
-    set(KEY_QC_CACHE_VIDEO_BUFFERS, VALUE_DISABLE);
+    set(KEY_QC_CACHE_VIDEO_BUFFERS, "0");
 
     if (m_pCapability->low_power_mode_supported == 1) {
         set(KEY_QC_LOW_POWER_MODE_SUPPORTED, VALUE_TRUE);
@@ -7715,17 +7714,11 @@ int32_t QCameraParameters::setHDRAEBracket(cam_exp_bracketing_t hdrBracket)
 int32_t QCameraParameters::setCacheVideoBuffers(const char *cacheVideoBufStr)
 {
     if (cacheVideoBufStr != NULL) {
-        int32_t cacheVideoBuf = lookupAttr(ENABLE_DISABLE_MODES_MAP,
-                PARAM_MAP_SIZE(ENABLE_DISABLE_MODES_MAP), cacheVideoBufStr);
-        if(cacheVideoBuf != NAME_NOT_FOUND) {
-            CDBG("%s : Setting video buffer %s", __func__,
+        int32_t cacheVideoBuf = atoi(cacheVideoBufStr);
+        CDBG("%s : Setting video buffer %s", __func__,
                 (cacheVideoBuf == 0) ? "UnCached" : "Cached");
-            updateParamEntry(KEY_QC_CACHE_VIDEO_BUFFERS, cacheVideoBufStr);
-            return NO_ERROR;
-        }
-        else {
-            CDBG_HIGH("%s : Invalid mapped cache video value: %d",__func__, cacheVideoBuf);
-        }
+        updateParamEntry(KEY_QC_CACHE_VIDEO_BUFFERS, cacheVideoBufStr);
+        return NO_ERROR;
     }
     CDBG_HIGH("Invalid cache video value: %s",
             (cacheVideoBufStr == NULL) ? "NULL" : cacheVideoBufStr);
