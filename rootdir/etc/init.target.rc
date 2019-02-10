@@ -72,7 +72,7 @@ service vendor.imsrcsservice /system/vendor/bin/imsrcsd
    group radio diag inet log wakelock
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-    restart vendor.ims_rtp_daemon
+    start vendor.imsrcsservice
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
