@@ -293,15 +293,11 @@ PRODUCT_PACKAGES += \
     uceShimService \
     android.hardware.radio.config@1.0 \
     android.hardware.radio.deprecated@1.0 \
-    android.hardware.radio@1.0 \
-    android.hardware.radio@1.1 \
-    android.hardware.radio@1.2 \
     libandroid_net \
     libqdMetaData.system \
     libreference-ril \
     libril \
     librilutils \
-    libdiag_system \
     vendor.qti.hardware.camera.device@1.0
 
 include device/wingtech/wt88047/default-prop.mk
