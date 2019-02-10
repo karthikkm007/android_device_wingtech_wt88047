@@ -185,9 +185,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
-#enabling IMS for this target
-TARGET_USES_IMS := true
-
 # odex system for a faster boot
 WITH_DEXPREOPT := true
 
