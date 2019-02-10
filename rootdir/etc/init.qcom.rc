@@ -220,9 +220,6 @@ on boot
     # camera sockets
     mkdir /data/misc/camera 0770 camera camera
 
-    #Create folder for mm-qcamera-daemon
-    mkdir /data/vendor/camera 0770 camera camera
-
     # Create directory used by display clients
     mkdir /data/misc/display 0770 system graphics
     mkdir /persist/display 0770 system graphics
