@@ -4042,21 +4042,6 @@ int32_t QCamera2HardwareInterface::processFocusPositionInfo(cam_focus_pos_info_t
     return NO_ERROR;
 }
 
-int32_t QCamera2HardwareInterface::processFrameIDReset(uint32_t frame_id)
-{
-    if (needReprocess()) {
-        QCameraPicChannel *pReprocChannel =
-                (QCameraPicChannel *)m_postprocessor.getReprocChannel();
-        if (NULL != pReprocChannel) {
-            //flush the reprocess channel buffer and queue.
-            uint32_t flush_frame_idx = frame_id;
-            CDBG_HIGH("%s, flush the reprocess channel buffer", __func__);
-            pReprocChannel->flushSuperbuffer(flush_frame_idx);
-        }
-    }
-    return NO_ERROR;
-}
-
 /*===========================================================================
  * FUNCTION   : processAutoFocusEvent
  *
@@ -4085,13 +4070,6 @@ int32_t QCamera2HardwareInterface::processAutoFocusEvent(cam_auto_focus_data_t &
     case CAM_FOCUS_MODE_MACRO:
         if (getCancelAutoFocus()) {
             // auto focus has canceled, just ignore it
-            break;
-        }
-
-        // If the HAL focus mode is different from AF INFINITY focus mode, send event to app
-        if ((focus_data.focus_mode == CAM_FOCUS_MODE_INFINITY) &&
-                (focus_data.focus_state == CAM_AF_INACTIVE)) {
-            ret = sendEvtNotify(CAMERA_MSG_FOCUS, true, 0);
             break;
         }
 
@@ -4133,14 +4111,6 @@ int32_t QCamera2HardwareInterface::processAutoFocusEvent(cam_auto_focus_data_t &
         break;
     case CAM_FOCUS_MODE_CONTINOUS_VIDEO:
     case CAM_FOCUS_MODE_CONTINOUS_PICTURE:
-
-        // If the HAL focus mode is different from AF INFINITY focus mode, send event to app
-        if ((focus_data.focus_mode == CAM_FOCUS_MODE_INFINITY) &&
-                (focus_data.focus_state == CAM_AF_INACTIVE)) {
-            ret = sendEvtNotify(CAMERA_MSG_FOCUS, false, 0);
-            break;
-        }
-
         if (mActiveAF &&
             (focus_data.focus_state == CAM_AF_PASSIVE_FOCUSED ||
             focus_data.focus_state == CAM_AF_PASSIVE_UNFOCUSED)) {
