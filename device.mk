@@ -285,19 +285,16 @@ PRODUCT_BOOT_JARS += \
 # IMS ( Vendor )
 PRODUCT_PACKAGES += \
     ims \
+    imscmlibrary \
+    libloc_api_v02 \
+    libloc_ds_api \
+    libmm-abl \
+    libtime_genoff \
     shutdownlistener \
     TimeService \
     qcrilmsgtunnel \
-    uceShimService \
-    embms \
-    QtiTelephonyService \
-    android.hardware.radio.config@1.0 \
-    android.hardware.radio.deprecated@1.0 \
-    libandroid_net \
-    libqdMetaData.system \
-    libreference-ril \
-    libril \
-    librilutils \
-    vendor.qti.hardware.camera.device@1.0
+    qcnvitems \
+    qcrilhook \
+    qti-telephony-common
 
 include device/wingtech/wt88047/default-prop.mk
