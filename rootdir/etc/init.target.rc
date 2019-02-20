@@ -45,35 +45,45 @@ service imsstarter /vendor/bin/init.qti.ims.sh
 on property:vold.decrypt=trigger_restart_framework
     start imsstarter
 
-service imscmservice /system/vendor/bin/imscmservice
+service vendor.imscmservice /system/vendor/bin/imscmservice
     class main
     user system
     group radio net_raw oem_2950 log
     disabled
 
-on property:sys.ims.DATA_DAEMON_STATUS=1
-    start imscmservice
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+    start vendor.imscmservice
 
-## imsqmidaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
+    writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.service.qti.ims.enabled=1
     start vendor.imsqmidaemon
 
-# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
     group system wifi radio inet log diag
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start vendor.imsdatadaemon
+
+service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
+    class main
+    user system
+    socket ims_rtpd stream 0660 system radio
+    group radio diag inet log
+    disabled
+
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+    start vendor.ims_rtp_daemon
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
