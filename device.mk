@@ -273,19 +273,12 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common \
-    ims-common
-
-# Telephony
-PRODUCT_PACKAGES += \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+    ims-ext-common
 
 # IMS ( Vendor )
 PRODUCT_PACKAGES += \
     ims \
+    imssettings \
     imscmlibrary \
     libloc_api_v02 \
     libloc_ds_api \
@@ -296,6 +289,9 @@ PRODUCT_PACKAGES += \
     qcrilmsgtunnel \
     qcnvitems \
     qcrilhook \
+    qti-vzw-ims-internal \
+    com.qualcomm.qti.imscmservice@1.0-java \
+    QtiTelephonyService \
     qti-telephony-common
 
 include device/wingtech/wt88047/default-prop.mk
