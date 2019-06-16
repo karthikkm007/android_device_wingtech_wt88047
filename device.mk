@@ -180,3 +180,6 @@ PRODUCT_PACKAGES += \
 
 # Inherit the rest from msm8916-common
 $(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
+
+# Device Default Props
+include device/wingtech/wt88047/default-prop.mk
