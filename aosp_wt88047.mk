@@ -16,7 +16,7 @@
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_mini_phone.mk)
+$(call inherit-product, vendor/aosp/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
@@ -24,14 +24,18 @@ TARGET_BOARD_PLATFORM_VARIANT := msm8916
 # Assert
 TARGET_OTA_ASSERT_DEVICE := HM2014811,HM2014812,HM2014813,HM2014814,HM2014815,HM2014816,HM2014817,HM2014818,HM2014819,HM2014820,HM2014821,HM2014112,wt88047,wt86047
 
-PRODUCT_NAME := lineage_wt88047
+PRODUCT_NAME := aosp_wt88047
 BOARD_VENDOR := wingtech
 PRODUCT_DEVICE := wt88047
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Build fingerprint
-BUILD_FINGERPRINT="Xiaomi/2014817/HM2014817:5.1.1/LMY47V/V9.2.5.0.LHJMIEK:user/release-keys"
+BUILD_FINGERPRINT := Xiaomi/chiron/chiron:8.0.0/OPR1.170623.027/V9.5.4.0.ODEMIFA:user/release-keys
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="2014817-user 5.1.1 LMY47V V9.2.5.0.LHJMIEK release-keys"
+    PRIVATE_BUILD_DESC="chiron-user 8.0.0 OPR1.170623.027 V9.5.4.0.ODEMIFA release-keys"
+
+# Boot animation
+
+TARGET_BOOT_ANIMATION_RES := 720
