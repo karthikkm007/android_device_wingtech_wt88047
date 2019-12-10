@@ -168,7 +168,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
-include device/qcom/sepolicy-legacy/sepolicy.mk
+
+#include device/qcom/sepolicy-legacy/sepolicy.mk
 
 # Shims
 TARGET_LD_SHIM_LIBS += \
