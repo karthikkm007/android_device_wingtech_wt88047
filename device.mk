@@ -368,7 +368,7 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0
 
 # Device Default Props
-include device/wingtech/wt88047/default-prop.mk
+include device/wingtech/wt88047/default_prop.mk
 
 # System Properties
 include device/wingtech/wt88047/system_prop.mk
