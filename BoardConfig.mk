@@ -171,6 +171,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 #include device/qcom/sepolicy-legacy/sepolicy.mk
 
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/temp
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
