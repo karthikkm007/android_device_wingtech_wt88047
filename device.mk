@@ -287,9 +287,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
-# System Properties
-$(call inherit-product, device/cyanogen/msm8916-common/system_prop_msm8916.mk)
-
 # Sensor HAL
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
@@ -303,9 +300,6 @@ PRODUCT_COPY_FILES += \
 
 # Shipping API level (for CTS backward compatibility)
 PRODUCT_SHIPPING_API_LEVEL := 19
-
-# System Properties
-include device/wingtech/wt88047/system_prop.mk)
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -373,8 +367,8 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
 
-# Inherit the rest from msm8916-common
-$(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
-
 # Device Default Props
 include device/wingtech/wt88047/default-prop.mk
+
+# System Properties
+include device/wingtech/wt88047/system_prop.mk
