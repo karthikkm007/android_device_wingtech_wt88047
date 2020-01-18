@@ -367,10 +367,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
 
-# Remove some packages to fit Gapps
-PRODUCT_PACKAGES += \
-    RemovePackages
-
 # Device Default Props
 include device/wingtech/wt88047/default_prop.mk
 
